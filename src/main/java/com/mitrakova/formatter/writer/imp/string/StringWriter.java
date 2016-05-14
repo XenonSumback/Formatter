@@ -8,8 +8,10 @@ import com.mitrakova.formatter.writer.WriterException;
 
 public class StringWriter implements IWriter {
 
-    public void write(IFormatter formatter) throws WriterException {
-        System.out.print(formatter.getResult());
+
+
+    public void write(StringBuffer insert) throws WriterException {
+        System.out.print(insert);
     }
 
     public void close()  {

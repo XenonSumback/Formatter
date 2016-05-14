@@ -28,10 +28,7 @@ public class MainClass {
         IFormatter stringFormatter = new Formatter();
         try {
             stringFormatter.format(stringReader, stringWriter);
-            stringWriter.write(stringFormatter);
         } catch (FormatterException e){
-            e.printStackTrace();
-        } catch (WriterException e) {
             e.printStackTrace();
         }
         IReader fileReader = new FileReader();
@@ -43,7 +40,6 @@ public class MainClass {
                 try {
                     IWriter fileWriter = new FileWriter();
                     fileFormatter.format(fileReader, fileWriter);
-                    fileWriter.write(fileFormatter);
                     fileWriter.close();
                 } catch (FormatterException e) {
                     e.printStackTrace();

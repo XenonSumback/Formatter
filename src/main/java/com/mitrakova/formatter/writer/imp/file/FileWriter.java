@@ -23,12 +23,10 @@ public class FileWriter implements IWriter {
     }
 
 
-    public void write(IFormatter formatter) throws WriterException {
-
-        out.print(formatter.getResult());
+    public void write(StringBuffer insert) throws WriterException {
+        out.print(insert);
 
     }
-
 
     public void close() {
             out.close();

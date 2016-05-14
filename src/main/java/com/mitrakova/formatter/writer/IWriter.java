@@ -4,6 +4,6 @@ import com.mitrakova.formatter.formatter.IFormatter;
 
 
 public interface IWriter {
-    void write(IFormatter formatter) throws WriterException;
+    void write(StringBuffer insert) throws WriterException;
     void close() throws WriterException;
 }
