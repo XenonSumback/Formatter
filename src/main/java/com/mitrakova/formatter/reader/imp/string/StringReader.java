@@ -14,14 +14,14 @@ public class StringReader implements IReader {
 
     public StringReader(String string) throws ReaderException {
         if(string == null){
-            throw new ReaderException();
+            throw new ReaderException(null);
         }
         char chars[] = string.toCharArray();
         this.chars = chars;
         lenOfChars = chars.length;
     }
 
-    public char read(int index) {
+    public int read(int index) {
         char symbol;
         this.index = index;
         symbol = chars[index];
@@ -29,9 +29,10 @@ public class StringReader implements IReader {
         return symbol;
     }
 
-    public void close() {
-    }
     public int getLen(){
         return lenOfChars;
+    }
+
+    public void close() {
     }
 }
