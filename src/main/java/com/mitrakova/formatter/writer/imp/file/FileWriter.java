@@ -1,6 +1,5 @@
 package com.mitrakova.formatter.writer.imp.file;
 
-import com.mitrakova.formatter.formatter.IFormatter;
 import com.mitrakova.formatter.writer.IWriter;
 import com.mitrakova.formatter.writer.WriterException;
 
@@ -8,12 +7,14 @@ import java.io.*;
 
 
 /**
- * Created by wolf on 11.05.16.
+ * Writes results of formatting
  */
 public class FileWriter implements IWriter {
+
     PrintWriter out = null;
+
     public FileWriter() throws WriterException {
-        File dir = new File("/home/wolf/Downloads/Formatter/src/main/resources");
+        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources");
         File file = new File(dir, "2.txt");
         try {
             out = new PrintWriter(file.getAbsoluteFile());
@@ -23,12 +24,12 @@ public class FileWriter implements IWriter {
     }
 
 
-    public void write(StringBuffer insert) throws WriterException {
+    public void write( final StringBuffer insert) {
         out.print(insert);
 
     }
 
-    public void close() {
-            out.close();
-        }
+    public void close() throws WriterException {
+        out.close();
+    }
 }

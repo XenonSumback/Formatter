@@ -7,7 +7,7 @@ import com.mitrakova.formatter.reader.ReaderException;
 import java.io.*;
 
 /**
- * Created by wolf on 30.04.16.
+ *
  */
 public class FileReader implements IReader {
     InputStream bufferedStream;
@@ -15,7 +15,7 @@ public class FileReader implements IReader {
 
 
     public FileReader() throws ReaderException {
-        File dir = new File("/home/wolf/Downloads/Formatter/src/main/resources/");
+        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources/");
         File file = new File(dir, "1.txt");
         try {
             fileStream = new FileInputStream(file);
@@ -26,10 +26,10 @@ public class FileReader implements IReader {
     }
 
 
-    public int read(int index) throws ReaderException {
+    public int read(final int index) throws ReaderException {
         int c;
         try {
-            c=bufferedStream.read();
+            c = bufferedStream.read();
         } catch (IOException e) {
             throw new ReaderException(e);
         }

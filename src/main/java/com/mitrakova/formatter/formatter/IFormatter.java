@@ -4,9 +4,13 @@ import com.mitrakova.formatter.reader.IReader;
 import com.mitrakova.formatter.writer.IWriter;
 
 
-/**
- * Created by wolf on 23.04.16.
- */
+
 public interface IFormatter {
+    /**
+     * Format initial chars according to rules
+     * @param reader - get initial chars
+     * @param writer - write format chars
+     * @throws FormatterException - method Exception
+     */
     void format(IReader reader, IWriter writer) throws FormatterException;
 }

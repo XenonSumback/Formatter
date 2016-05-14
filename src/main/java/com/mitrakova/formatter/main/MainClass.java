@@ -28,25 +28,32 @@ public class MainClass {
         IFormatter stringFormatter = new Formatter();
         try {
             stringFormatter.format(stringReader, stringWriter);
-        } catch (FormatterException e){
+        } catch (FormatterException e) {
             e.printStackTrace();
         }
         IReader fileReader = new FileReader();
         IFormatter fileFormatter = new Formatter();
-        for (int i=0;i<fileReader.getLen();i++){
+        IWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter();
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < fileReader.getLen(); i++) {
             int code = 0;
-            while (code != -1){
+            while (code != -1) {
                 code = fileReader.read(i);
                 try {
-                    IWriter fileWriter = new FileWriter();
                     fileFormatter.format(fileReader, fileWriter);
-                    fileWriter.close();
                 } catch (FormatterException e) {
                     e.printStackTrace();
-                } catch (WriterException e) {
-                    e.printStackTrace();
                 }
-                System.out.print((char)code);
+//                    System.out.print((char)code);
+            }
+            try {
+                fileWriter.close();
+            } catch (WriterException e) {
+                e.printStackTrace();
             }
         }
     }
