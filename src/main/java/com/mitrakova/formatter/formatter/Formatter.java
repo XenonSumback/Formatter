@@ -21,7 +21,6 @@ public class Formatter implements IFormatter {
 
         try {
             for (int i = 0; i < reader.getLen(); i++) {
-
                 symbol = (char) reader.read(i);
                 switch (symbol) {
                     case '{':
@@ -43,10 +42,16 @@ public class Formatter implements IFormatter {
                         insert.append((char) symbol);
                         break;
                 }
+
             }
         } catch (ReaderException e) {
             throw new FormatterException(e);
         }
-        writer.write(insert);
+        try {
+            writer.write(insert);
+        } catch (WriterException e) {
+            throw new FormatterException(e);
+        }
+
     }
 }

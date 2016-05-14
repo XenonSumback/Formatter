@@ -12,8 +12,6 @@ import com.mitrakova.formatter.writer.WriterException;
 import com.mitrakova.formatter.writer.imp.file.FileWriter;
 import com.mitrakova.formatter.writer.imp.string.StringWriter;
 
-import java.io.IOException;
-
 public class MainClass {
 
     public static void main(final String[] arg) throws ReaderException {
@@ -39,22 +37,15 @@ public class MainClass {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-        for (int i = 0; i < fileReader.getLen(); i++) {
-            int code = 0;
-            while (code != -1) {
-                code = fileReader.read(i);
-                try {
-                    fileFormatter.format(fileReader, fileWriter);
-                } catch (FormatterException e) {
-                    e.printStackTrace();
-                }
-//                    System.out.print((char)code);
-            }
-            try {
-                fileWriter.close();
-            } catch (WriterException e) {
-                e.printStackTrace();
-            }
+        try {
+             fileFormatter.format(fileReader, fileWriter);
+        } catch (FormatterException e) {
+            e.printStackTrace();
+        }
+        try {
+            fileWriter.close();
+        } catch (WriterException e) {
+            e.printStackTrace();
         }
     }
 }

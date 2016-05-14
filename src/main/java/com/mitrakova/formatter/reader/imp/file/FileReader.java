@@ -12,10 +12,10 @@ import java.io.*;
 public class FileReader implements IReader {
     InputStream bufferedStream;
     InputStream fileStream;
-
+    int lenOfFile;
 
     public FileReader() throws ReaderException {
-        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources/");
+        File dir = new File("/home/wolf/IdeaProjects/Formatterr/src/main/resources/");
         File file = new File(dir, "1.txt");
         try {
             fileStream = new FileInputStream(file);
@@ -23,6 +23,11 @@ public class FileReader implements IReader {
             throw new ReaderException(e);
         }
         bufferedStream = new BufferedInputStream(fileStream);
+        try {
+            lenOfFile = fileStream.available();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -47,10 +52,6 @@ public class FileReader implements IReader {
 
     public int getLen() throws ReaderException {
 
-        try {
-            return fileStream.available();
-        } catch (IOException e) {
-            throw new ReaderException(e);
-        }
+        return lenOfFile;
     }
 }
