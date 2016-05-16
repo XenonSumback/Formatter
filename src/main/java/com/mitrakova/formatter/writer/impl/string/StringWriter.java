@@ -1,4 +1,4 @@
-package com.mitrakova.formatter.writer.imp.string;
+package com.mitrakova.formatter.writer.impl.string;
 
 import com.mitrakova.formatter.formatter.IFormatter;
 import com.mitrakova.formatter.writer.IWriter;
@@ -17,9 +17,6 @@ public class StringWriter implements IWriter {
         System.out.print(insert);
     }
 
-    /**
-     * imp of IWriter
-     */
     public void close()  {
 
     }

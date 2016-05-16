@@ -1,5 +1,4 @@
-package com.mitrakova.formatter.reader.imp.file;
-
+package com.mitrakova.formatter.reader.impl.file;
 
 import com.mitrakova.formatter.reader.IReader;
 import com.mitrakova.formatter.reader.ReaderException;
@@ -7,16 +6,19 @@ import com.mitrakova.formatter.reader.ReaderException;
 import java.io.*;
 
 /**
- *
+ * 1
  */
 public class FileReader implements IReader {
+
     InputStream bufferedStream;
     InputStream fileStream;
-    int lenOfFile;
 
-    public FileReader() throws ReaderException {
+    boolean endOfFile = false;
+    int bufferedChar;
+
+    public FileReader(String nameOfFile) throws ReaderException {
         File dir = new File("/home/wolf/IdeaProjects/Formatterr/src/main/resources/");
-        File file = new File(dir, "1.txt");
+        File file = new File(dir, nameOfFile);
         try {
             fileStream = new FileInputStream(file);
         } catch (FileNotFoundException e) {
@@ -24,34 +26,34 @@ public class FileReader implements IReader {
         }
         bufferedStream = new BufferedInputStream(fileStream);
         try {
-            lenOfFile = fileStream.available();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public int read(final int index) throws ReaderException {
-        int c;
-        try {
-            c = bufferedStream.read();
+            bufferedChar = (char) bufferedStream.read();
         } catch (IOException e) {
             throw new ReaderException(e);
         }
-        return c;
+
     }
 
+    public char read() throws ReaderException {
+        int result = bufferedChar;
+        try {
+            bufferedChar = bufferedStream.read();
+            if (bufferedChar == -1) {
+                endOfFile = true;
+            }
+        } catch (IOException e) {
+            throw new ReaderException(e);
+        }
+        return (char)result;
+    }
 
     public void close() throws ReaderException {
         try {
             bufferedStream.close();
         } catch (IOException e) {
-            throw new  ReaderException(e);
+            throw new ReaderException(e);
         }
     }
-
-    public int getLen() throws ReaderException {
-
-        return lenOfFile;
+    public boolean isEnd() {
+        return endOfFile;
     }
 }

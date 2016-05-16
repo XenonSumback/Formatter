@@ -1,4 +1,4 @@
-package com.mitrakova.formatter.writer.imp.file;
+package com.mitrakova.formatter.writer.impl.file;
 
 import com.mitrakova.formatter.writer.IWriter;
 import com.mitrakova.formatter.writer.WriterException;

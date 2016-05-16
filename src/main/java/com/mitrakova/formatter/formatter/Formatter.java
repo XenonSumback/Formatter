@@ -8,7 +8,9 @@ import com.mitrakova.formatter.writer.WriterException;
 public class Formatter implements IFormatter {
 
     private StringBuffer insert = new StringBuffer();
-
+    String tabulation = "    ";
+    int openedBraces = 0;
+    int closedBraces = 0;
     /**
      * formatter for chars
      * @param reader - initial chars
@@ -17,41 +19,60 @@ public class Formatter implements IFormatter {
      */
 
     public void format(final IReader reader, final IWriter writer) throws FormatterException {
-        int symbol;
-
+        char symbol;
         try {
-            for (int i = 0; i < reader.getLen(); i++) {
-                symbol = (char) reader.read(i);
+            while (!reader.isEnd()) {
+                symbol = reader.read();
                 switch (symbol) {
                     case '{':
-                        insert.append((char) symbol);
+                        openedBraces++;
+                        insert.append(symbol);
                         insert.append('\n');
+                        for (int tab = 0; tab < openedBraces; tab++) {
+                            insert.append(tabulation);
+                        }
                         break;
                     case '}':
-                        insert.append((char) symbol);
+                        if (openedBraces < closedBraces) {
+                            throw new FormatterException(null);
+                        }
+                        openedBraces--;
+                        insert.append(symbol);
                         insert.append('\n');
+                        for (int tab = 0; tab < openedBraces; tab++) {
+                            insert.append(tabulation);
+                        }
                         break;
                     case ';':
-                        insert.append((char) symbol);
+                        insert.append(symbol);
                         insert.append('\n');
+                        for (int tab = 0; tab < openedBraces; tab++) {
+                            insert.append(tabulation);
+                        }
                         break;
-                    case '=':
-                        insert.append(" = ");
+                    case '\n':
+                        insert.append("");
+                        for (int tab = 0; tab < openedBraces; tab++) {
+                            insert.append(tabulation);
+                        }
                         break;
                     default:
-                        insert.append((char) symbol);
+                        insert.append(symbol);
                         break;
                 }
-
             }
         } catch (ReaderException e) {
             throw new FormatterException(e);
         }
+        if (openedBraces != closedBraces) {
+            throw new FormatterException(null);
+        }
         try {
             writer.write(insert);
-        } catch (WriterException e) {
-            throw new FormatterException(e);
-        }
+            } catch (WriterException e) {
+                throw new FormatterException(e);
+            }
+
 
     }
 }
