@@ -8,15 +8,21 @@ import java.io.*;
 /**
  * 1
  */
-public class FileReader implements IReader {
+public class FileReader implements IReader, IClose {
 
-    InputStream bufferedStream;
-    InputStream fileStream;
+    private InputStream bufferedStream;
+    private InputStream fileStream;
 
-    boolean endOfFile = false;
-    int bufferedChar;
+    private boolean endOfFile = false;
+    private int bufferedChar;
 
-    public FileReader(String nameOfFile) throws ReaderException {
+    /**
+     * constructor
+     * @param nameOfFile - file for reading
+     * @throws ReaderException
+     */
+
+    public FileReader(final String nameOfFile) throws ReaderException {
         File dir = new File("/home/wolf/IdeaProjects/Formatterr/src/main/resources/");
         File file = new File(dir, nameOfFile);
         try {
@@ -33,6 +39,11 @@ public class FileReader implements IReader {
 
     }
 
+    /**
+     * read char from input stream
+     * @return - symbol from stream
+     * @throws ReaderException
+     */
     public char read() throws ReaderException {
         int result = bufferedChar;
         try {
@@ -43,9 +54,13 @@ public class FileReader implements IReader {
         } catch (IOException e) {
             throw new ReaderException(e);
         }
-        return (char)result;
+        return (char) result;
     }
 
+    /**
+     * close input stream
+     * @throws ReaderException
+     */
     public void close() throws ReaderException {
         try {
             bufferedStream.close();
@@ -56,4 +71,5 @@ public class FileReader implements IReader {
     public boolean isEnd() {
         return endOfFile;
     }
+
 }

@@ -1,10 +1,21 @@
 package com.mitrakova.formatter.formatter;
 
 /**
- * Created by wolf on 23.04.16.
+ * Exception for IFormatter
  */
 public class FormatterException extends Exception {
-    public FormatterException(Exception e) {
+    /**
+     * constructor for catch
+     * @param e -caught exception
+     */
+     FormatterException(final Exception e) {
         initCause(e);
+    }
+    /**
+     * constructor for throw
+     * @param s - message
+     */
+     FormatterException(final String s) {
+        System.err.print(s);
     }
 }

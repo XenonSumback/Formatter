@@ -1,10 +1,22 @@
 package com.mitrakova.formatter.reader;
 
 /**
- * Created by wolf on 23.04.16.
+ * Exception for IReader
  */
 public class ReaderException extends Exception {
-            public ReaderException(Exception e){
-                initCause(e);
-            }
+    /**
+     * constructor for catch
+     * @param e -caught exception
+     */
+    public ReaderException(final Exception e) {
+        initCause(e);
+    }
+
+    /**
+     * constructor for throw
+     * @param s - message
+     */
+    public ReaderException(final String s) {
+        System.err.print(s);
+    }
 }

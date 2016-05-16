@@ -3,7 +3,9 @@ package com.mitrakova.formatter.formatter;
 import com.mitrakova.formatter.reader.IReader;
 import com.mitrakova.formatter.writer.IWriter;
 
-
+/**
+ * formatted initial chars according to rules
+ */
 
 public interface IFormatter {
     /**

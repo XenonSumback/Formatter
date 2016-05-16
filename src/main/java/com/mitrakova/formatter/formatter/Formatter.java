@@ -8,9 +8,7 @@ import com.mitrakova.formatter.writer.WriterException;
 public class Formatter implements IFormatter {
 
     private StringBuffer insert = new StringBuffer();
-    String tabulation = "    ";
-    int openedBraces = 0;
-    int closedBraces = 0;
+    private String tabulation = "    ";
     /**
      * formatter for chars
      * @param reader - initial chars
@@ -19,6 +17,8 @@ public class Formatter implements IFormatter {
      */
 
     public void format(final IReader reader, final IWriter writer) throws FormatterException {
+        int openedBraces = 0;
+        int closedBraces = 0;
         char symbol;
         try {
             while (!reader.isEnd()) {
@@ -34,7 +34,7 @@ public class Formatter implements IFormatter {
                         break;
                     case '}':
                         if (openedBraces < closedBraces) {
-                            throw new FormatterException(null);
+                            throw new FormatterException("Missed open Brace '{'");
                         }
                         openedBraces--;
                         insert.append(symbol);
@@ -65,7 +65,7 @@ public class Formatter implements IFormatter {
             throw new FormatterException(e);
         }
         if (openedBraces != closedBraces) {
-            throw new FormatterException(null);
+            throw new FormatterException("missed close brace '}'");
         }
         try {
             writer.write(insert);

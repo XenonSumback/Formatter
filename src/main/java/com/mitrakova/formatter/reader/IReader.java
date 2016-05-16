@@ -1,9 +1,9 @@
 package com.mitrakova.formatter.reader;
 
 /**
- * Created by wolf on 22.04.16.
+ * Interface for reading chars from stream
  */
-public interface IReader{
+public interface IReader {
     /**
      *
      * @return char from stream
@@ -12,14 +12,8 @@ public interface IReader{
     char read() throws ReaderException;
 
     /**
-     * close the stream
-     * @throws ReaderException
-     */
-    void close() throws ReaderException;
-
-    /**
      * check the end of chain
-     * @return -
+     * @return - true if reached end of stream
      */
     boolean isEnd();
 }

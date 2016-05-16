@@ -12,8 +12,10 @@ import com.mitrakova.formatter.writer.WriterException;
 import com.mitrakova.formatter.writer.impl.file.FileWriter;
 import com.mitrakova.formatter.writer.impl.string.StringWriter;
 
+/**
+ * Bootstrap
+ */
 public class MainClass {
-
     /**
      * Entry point
      * @param arg - arguments
@@ -34,14 +36,14 @@ public class MainClass {
         } catch (FormatterException e) {
             e.printStackTrace();
         }
-        IReader fileReader = null;
+        FileReader fileReader = null;
         try {
             fileReader = new FileReader(nameOfFile);
         } catch (ReaderException e) {
             e.printStackTrace();
         }
         IFormatter fileFormatter = new Formatter();
-        IWriter fileWriter = null;
+        FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter();
         } catch (WriterException e) {
@@ -50,6 +52,11 @@ public class MainClass {
         try {
              fileFormatter.format(fileReader, fileWriter);
         } catch (FormatterException e) {
+            e.printStackTrace();
+        }
+        try {
+            fileReader.close();
+        } catch (ReaderException e) {
             e.printStackTrace();
         }
         try {
