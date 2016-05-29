@@ -15,7 +15,7 @@ public class FormatterException extends Exception {
      * constructor for throw
      * @param s - message
      */
-     FormatterException(final String s) {
+    public FormatterException(final String s) {
         System.err.print(s);
     }
 }
