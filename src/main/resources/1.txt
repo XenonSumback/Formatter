@@ -1,2 +1,11 @@
-wr;
-{dgubjo;rtb;fjkg(){ryr;}djbkd;fjhfk;fj;}
+public FileWriter() throws WriterException {
+        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources");
+        File file = new File(dir, "2.txt");
+        try {
+            fileStream = new FileOutputStream(file);
+        } catch (FileNot
+        FoundException e) {
+            throw new WriterException(e);
+        }
+        bufferedStream                = new BufferedOutputStream(fileStream);
+    }

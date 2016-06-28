@@ -1,7 +1,7 @@
 package com.mitrakova.formatter.formatter.specialsymbols;
 
 /**
- * Controls number of opend & closed braces
+ * Controls number of opened & closed braces
  */
 public class Braces {
     private static int openedBraces = 0;
@@ -12,7 +12,6 @@ public class Braces {
     }
 
     public static void incrementOpenedBraces() {
-
         openedBraces++;
     }
 
@@ -22,5 +21,10 @@ public class Braces {
 
     public static int getOpenedBraces() {
         return openedBraces;
+    }
+
+    public static void EndOfFormat(){
+        openedBraces = 0;
+        closedBraces = 0;
     }
 }

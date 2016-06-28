@@ -21,7 +21,7 @@ public class MainClass {
      * @param arg - arguments
      */
     public static void main(final String[] arg) {
-        String string = "qwe(){a = 1;hello;fgh;}dfg;{}";
+        String string = "qwe()      {a = 1;hello;f            gh;(int i=0;i<n;i++){ity;}gjyjyg{}oi;\n\n\n;dfg;{}}";
         String nameOfFile = "1.txt";
         IReader stringReader = null;
         try {

@@ -1,14 +1,12 @@
-wr;
-        
-        {
-            dgubjo;
-            rtb;
-            fjkg(){
-                ryr;
-                }
-                djbkd;
-                fjhfk;
-                fj;
-                }
-                
-                
+publicFileWriter()throwsWriterException{
+    Filedir=newFile("/home/wolf/IdeaProjects/Formatter/src/main/resources");
+    Filefile=newFile(dir,"2.txt");
+    try{
+        fileStream=newFileOutputStream(file);
+        }
+        catch(FileNotFoundExceptione){
+            thrownewWriterException(e);
+            }
+            bufferedStream=newBufferedOutputStream(fileStream);
+            }
+            
