@@ -13,9 +13,15 @@ public class FormatSemiColon implements IHandler {
 
     public void doSomething(StringBuffer insert, StringBuffer lexeme, LexFinder lexFinder, StateContainer stateContainer) {
         lexFinder.findLex(lexeme, insert, stateContainer);
-        insert.append(";" + "\n");
-        for (int tab = 0; tab < Braces.getOpenedBraces(); tab++) {
-            insert.append(Tabulation.tabulate());
+        if (StateContainer.getInOneLineComment() || StateContainer.getInFor() || StateContainer.getInComment()) {
+
+            insert.append(';');
+        } else {
+            insert.append(";" + "\n");
+            for (int tab = 0; tab < Braces.getOpenedBraces(); tab++) {
+                insert.append(Tabulation.tabulate());
+            }
         }
+
     }
 }

@@ -23,7 +23,7 @@ public class FileReader implements IReader, IClose {
      */
 
     public FileReader(final String nameOfFile) throws ReaderException {
-        File dir = new File("/home/wolf/IdeaProjects/Formatterr/src/main/resources/");
+        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources/");
         File file = new File(dir, nameOfFile);
         try {
             fileStream = new FileInputStream(file);

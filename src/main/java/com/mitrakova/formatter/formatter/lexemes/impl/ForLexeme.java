@@ -8,7 +8,7 @@ import com.mitrakova.formatter.formatter.lexemes.ILex;
  */
 public class ForLexeme implements ILex {
     public void lexemeReaction(StateContainer stateContainer, StringBuffer insert) {
-        insert.append("for");
+        insert.append("for ");
         stateContainer.setInFor(true);
 
     }

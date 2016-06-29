@@ -1,12 +1,22 @@
-publicFileWriter()throwsWriterException{
-    Filedir=newFile("/home/wolf/IdeaProjects/Formatter/src/main/resources");
-    Filefile=newFile(dir,"2.txt");
-    try{
-        fileStream=newFileOutputStream(file);
+packagecom.mitrakova.reverser;
+importcom.mitrakova.container.IObjectContainer;
+/***Classfor reversingarrays*/
+publicclassReverserimplementsIReverser{
+    /***defaultconstructor*/
+publicReverser(){
         }
-        catch(FileNotFoundExceptione){
-            thrownewWriterException(e);
-            }
-            bufferedStream=newBufferedOutputStream(fileStream);
-            }
-            
+        /****@paramarray-array*@param<T>-type*@throwsReverserException-userexception*/
+public<T>voidreverse(finalIObjectContainer<T>array)throwsReverserException{
+            try{
+                for (inti=0;i<array.getSize()/2;i++){
+                    Ttmp=array.getElement(i);
+                    array.setElement(i,array.getElement(array.getSize()-i-1));
+                    array.setElement(array.getSize()-i-1,tmp);
+                    }
+                    }
+                    catch(Exceptione){
+                        thrownewReverserException(e);
+                        }
+                        }
+                        }
+                        

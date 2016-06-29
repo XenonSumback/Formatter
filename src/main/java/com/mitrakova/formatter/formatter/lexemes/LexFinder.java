@@ -9,7 +9,7 @@ import com.mitrakova.formatter.formatter.lexemes.impl.OneLineCommentLexeme;
 import java.util.HashMap;
 
 /**
- * Created by wolf on 29.06.16.
+ * finds key lexemes
  */
 public class LexFinder {
     private HashMap<String, ILex> tableOfLexemes;
@@ -21,6 +21,12 @@ public class LexFinder {
         tableOfLexemes.put("*/", new EndOfCommentLexeme());
     }
 
+    /**
+     *
+     * @param lexeme - init lexeme
+     * @param insert - stringBuffer for writing results of formatting
+     * @param stateContainer - Finite-state machine
+     */
     public void findLex(StringBuffer lexeme, StringBuffer insert, StateContainer stateContainer){
         String lex = lexeme.toString();
         if(tableOfLexemes.get(lex) != null){

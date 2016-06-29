@@ -8,7 +8,7 @@ import com.mitrakova.formatter.formatter.lexemes.ILex;
  */
 public class CommentLexeme implements ILex {
     public void lexemeReaction(StateContainer stateContainer, StringBuffer insert) {
-        insert.append("/**");
+        insert.append("/**"+"\n");
         stateContainer.setInOneLineComment(true);
 
     }

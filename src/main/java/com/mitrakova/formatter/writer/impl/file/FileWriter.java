@@ -19,7 +19,7 @@ public class FileWriter implements IWriter, IClose {
      * @throws WriterException - if can`t initialise stream
      */
     public FileWriter() throws WriterException {
-        File dir = new File("/home/wolf/IdeaProjects/Formatterr/src/main/resources");
+        File dir = new File("/home/wolf/IdeaProjects/Formatter/src/main/resources");
         File file = new File(dir, "2.txt");
         try {
             fileStream = new FileOutputStream(file);
