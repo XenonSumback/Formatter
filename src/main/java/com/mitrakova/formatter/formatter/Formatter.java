@@ -2,14 +2,8 @@ package com.mitrakova.formatter.formatter;
 
 import com.mitrakova.formatter.formatter.lexemes.*;
 import com.mitrakova.formatter.formatter.separatesymbols.ISeparator;
-import com.mitrakova.formatter.formatter.separatesymbols.impl.SeparateEndL;
-import com.mitrakova.formatter.formatter.separatesymbols.impl.SeparateSpace;
-import com.mitrakova.formatter.formatter.separatesymbols.impl.SeparateTab;
 import com.mitrakova.formatter.formatter.specialsymbols.Braces;
 import com.mitrakova.formatter.formatter.specialsymbols.IHandler;
-import com.mitrakova.formatter.formatter.specialsymbols.impl.FormatCloseBrace;
-import com.mitrakova.formatter.formatter.specialsymbols.impl.FormatOpenBrace;
-import com.mitrakova.formatter.formatter.specialsymbols.impl.FormatSemiColon;
 import com.mitrakova.formatter.reader.IReader;
 import com.mitrakova.formatter.reader.ReaderException;
 import com.mitrakova.formatter.writer.IWriter;
@@ -21,34 +15,27 @@ import java.util.HashMap;
 public class Formatter implements IFormatter {
     private StringBuffer insert;
     StringBuffer lexeme;
-    private HashMap<Character, IHandler> tableOfSpecialSymbols;
-    private HashMap<Character, ISeparator> tableOfSeparatelSymbols;
+    HashMap <Character, IHandler> tableOfSpecialSymbols;
+    HashMap <Character, ISeparator> tableOfSeparateSymbols;
     StateContainer stateContainer;
     LexFinder lexFinder;
 
-    public Formatter() {
+    public Formatter(IFormatSettings FormatSettings) {
         insert = new StringBuffer();
         lexeme = new StringBuffer();
         stateContainer = new StateContainer();
         lexFinder = new LexFinder();
-        tableOfSpecialSymbols = new HashMap<Character, IHandler>();
-        tableOfSpecialSymbols.put('{', new FormatOpenBrace());
-        tableOfSpecialSymbols.put('}', new FormatCloseBrace());
-        tableOfSpecialSymbols.put(';', new FormatSemiColon());
-        tableOfSeparatelSymbols = new HashMap<Character, ISeparator>();
-        tableOfSeparatelSymbols.put(' ', new SeparateSpace());
-        tableOfSeparatelSymbols.put('\t', new SeparateTab());
-        tableOfSeparatelSymbols.put('\n', new SeparateEndL());
-
+        tableOfSeparateSymbols = FormatSettings.getSeparateSymbols();
+        tableOfSpecialSymbols = FormatSettings.getSpecialSymbols();
     }
 
-    public void format(IReader reader, IWriter writer) throws FormatterException {
+    public void format(IReader reader, IWriter writer, IFormatSettings formatSettings) throws FormatterException {
         char symbol;
         try {
             while (!reader.isEnd()) {
                 symbol = reader.read();
-                if (tableOfSeparatelSymbols.get(symbol) != null) {
-                    tableOfSeparatelSymbols.get(symbol).separate(insert, stateContainer, lexFinder, lexeme);
+                if (tableOfSeparateSymbols.get(symbol) != null) {
+                    tableOfSeparateSymbols.get(symbol).separate(insert, stateContainer, lexFinder, lexeme);
                 }else{
                     if (tableOfSpecialSymbols.get(symbol) != null) {
                         tableOfSpecialSymbols.get(symbol).doSomething(insert, lexeme, lexFinder, stateContainer );

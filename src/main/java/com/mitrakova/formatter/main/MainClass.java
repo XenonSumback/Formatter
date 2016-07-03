@@ -1,8 +1,6 @@
 package com.mitrakova.formatter.main;
 
-import com.mitrakova.formatter.formatter.Formatter;
-import com.mitrakova.formatter.formatter.FormatterException;
-import com.mitrakova.formatter.formatter.IFormatter;
+import com.mitrakova.formatter.formatter.*;
 import com.mitrakova.formatter.reader.IReader;
 import com.mitrakova.formatter.reader.ReaderException;
 import com.mitrakova.formatter.reader.impl.file.FileReader;
@@ -32,10 +30,11 @@ public class MainClass {
         } catch (ReaderException e) {
             e.printStackTrace();
         }
+        IFormatSettings formatSettings = new FormatSettings();
         IWriter stringWriter = new StringWriter();
-        IFormatter stringFormatter = new Formatter();
+        IFormatter stringFormatter = new Formatter(formatSettings);
         try {
-            stringFormatter.format(stringReader, stringWriter);
+            stringFormatter.format(stringReader, stringWriter, formatSettings);
         } catch (FormatterException e) {
             e.printStackTrace();
         }
@@ -45,7 +44,7 @@ public class MainClass {
         } catch (ReaderException e) {
             e.printStackTrace();
         }
-        IFormatter fileFormatter = new Formatter();
+        IFormatter fileFormatter = new Formatter(formatSettings);
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter();
@@ -53,7 +52,7 @@ public class MainClass {
             e.printStackTrace();
         }
         try {
-             fileFormatter.format(fileReader, fileWriter);
+             fileFormatter.format(fileReader, fileWriter, formatSettings);
         } catch (FormatterException e) {
             e.printStackTrace();
         }
