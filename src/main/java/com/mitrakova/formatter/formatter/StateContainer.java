@@ -9,13 +9,15 @@ public class StateContainer {
     private static boolean inOneLineComment = false;
 
 
-    public  void setInFor(boolean inFor) { this.inFor = inFor;
+    public  void setInFor(boolean inFor) { StateContainer.inFor = inFor;
     }
 
     public  void setInComment(boolean inComment) {
-        this.inComment = inComment;
+        StateContainer.inComment = inComment;
     }
-    public void setInOneLineComment(boolean inOneLineComment){this.inOneLineComment = inOneLineComment;}
+
+    public void setInOneLineComment(boolean inOneLineComment){
+        StateContainer.inOneLineComment = inOneLineComment;}
 
     public static boolean getInComment(){
         return inComment;

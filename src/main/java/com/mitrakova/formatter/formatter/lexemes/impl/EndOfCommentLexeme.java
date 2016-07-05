@@ -4,7 +4,7 @@ import com.mitrakova.formatter.formatter.StateContainer;
 import com.mitrakova.formatter.formatter.lexemes.ILex;
 
 /**
- * Created by wolf on 29.06.16.
+ * Implementation for end of comment lexeme
  */
 public class EndOfCommentLexeme implements ILex {
     public void lexemeReaction(StateContainer stateContainer, StringBuffer insert) {

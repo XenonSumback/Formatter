@@ -1,5 +1,7 @@
 package com.mitrakova.formatter.formatter.specialsymbols;
 
+import com.mitrakova.formatter.formatter.FormatterException;
+
 /**
  * Controls number of opened & closed braces
  */
@@ -23,7 +25,10 @@ public class Braces {
         return openedBraces;
     }
 
-    public static void EndOfFormat(){
+    public static void EndOfFormat() throws FormatterException {
+        if (Braces.getOpenedBraces() != Braces.getClosedBraces()) {
+            throw new FormatterException("missed close brace '}'");
+        }
         openedBraces = 0;
         closedBraces = 0;
     }

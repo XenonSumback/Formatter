@@ -12,8 +12,8 @@ public interface IFormatter {
      * Format initial chars according to rules
      * @param reader - get initial chars
      * @param writer - write format chars
-     * @param formatSettings
+     * @param fsm
      * @throws FormatterException - method Exception
      */
-    void format(IReader reader, IWriter writer, IFormatSettings formatSettings) throws FormatterException;
+    void format(IReader reader, IWriter writer, IFSM fsm) throws FormatterException;
 }

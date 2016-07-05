@@ -27,11 +27,11 @@ public class FormatSettings implements IFormatSettings {
         tableOfSeparateSymbols.put('\n', new SeparateEndL());
     }
 
-    public HashMap getSpecialSymbols(){
+    public HashMap <Character, IHandler> getSpecialSymbols(){
         return tableOfSpecialSymbols;
     }
 
-    public HashMap getSeparateSymbols() {
+    public HashMap <Character, ISeparator> getSeparateSymbols() {
         return tableOfSeparateSymbols;
     }
 

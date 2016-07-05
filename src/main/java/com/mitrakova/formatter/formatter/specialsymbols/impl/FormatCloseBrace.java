@@ -8,7 +8,7 @@ import com.mitrakova.formatter.formatter.specialsymbols.IHandler;
 import com.mitrakova.formatter.formatter.specialsymbols.Tabulation;
 
 /**
- *
+ *Implementation for "{" symbols
  */
 public class FormatCloseBrace  implements IHandler {
 

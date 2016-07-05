@@ -19,10 +19,10 @@ public class MainClass {
      * @param arg - arguments
      */
     public static void main(final String[] arg) {
-        String string = "qwe()      {a = 1;hello;\n\t\t for (int i=0;i<n;i++)\n{s=0;} java;" +
-                "// one line comment \n /** " +
-                " * Bootstrap\n" +
-                " */ System.out.print(hello);}";
+        String string = "qwe()      {a = 1;hello;\n\t\t for (int i=0;       i<n;i++)\n{s=0;} java;" +
+                "// one line comment \n  " +
+                " \n " +
+                " System.out.print(hello);}";
         String nameOfFile = "1.txt";
         IReader stringReader = null;
         try {
@@ -31,10 +31,11 @@ public class MainClass {
             e.printStackTrace();
         }
         IFormatSettings formatSettings = new FormatSettings();
+        IFSM fsm = new FSM(formatSettings);
         IWriter stringWriter = new StringWriter();
-        IFormatter stringFormatter = new Formatter(formatSettings);
+        IFormatter stringFormatter = new Formatter();
         try {
-            stringFormatter.format(stringReader, stringWriter, formatSettings);
+            stringFormatter.format(stringReader, stringWriter, fsm);
         } catch (FormatterException e) {
             e.printStackTrace();
         }
@@ -44,7 +45,7 @@ public class MainClass {
         } catch (ReaderException e) {
             e.printStackTrace();
         }
-        IFormatter fileFormatter = new Formatter(formatSettings);
+        IFormatter fileFormatter = new Formatter();
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter();
@@ -52,7 +53,7 @@ public class MainClass {
             e.printStackTrace();
         }
         try {
-             fileFormatter.format(fileReader, fileWriter, formatSettings);
+             fileFormatter.format(fileReader, fileWriter, fsm);
         } catch (FormatterException e) {
             e.printStackTrace();
         }

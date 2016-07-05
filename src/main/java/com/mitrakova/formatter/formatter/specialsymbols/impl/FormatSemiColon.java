@@ -7,7 +7,7 @@ import com.mitrakova.formatter.formatter.specialsymbols.IHandler;
 import com.mitrakova.formatter.formatter.specialsymbols.Tabulation;
 
 /**
- * Created by wolf on 27.05.16.
+ * Implementation for ";" symbols
  */
 public class FormatSemiColon implements IHandler {
 

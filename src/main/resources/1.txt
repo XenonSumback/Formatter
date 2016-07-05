@@ -2,25 +2,14 @@ package com.mitrakova.reverser;
 
 import com.mitrakova.container.IObjectContainer;
 
-/**
- * Class for reversing arrays
- */
+
+
 
 public class Reverser implements IReverser {
 
-    /**
-     * default constructor
-     */
 
     public Reverser() {
     }
-
-    /**
-     *
-     * @param array - array
-     * @param <T> - type
-     * @throws ReverserException -  user exception
-     */
 
     public <T> void reverse(final IObjectContainer<T> array) throws ReverserException {
 

@@ -5,9 +5,10 @@ import com.mitrakova.formatter.formatter.lexemes.LexFinder;
 import com.mitrakova.formatter.formatter.separatesymbols.ISeparator;
 
 /**
- * Created by wolf on 28.06.16.
+ * Implementation for space symbol
  */
 public class SeparateSpace implements ISeparator {
+
     public void separate(StringBuffer insert, StateContainer stateContainer, LexFinder lexFinder, StringBuffer lexeme) {
         lexFinder.findLex(lexeme, insert, stateContainer);
     }

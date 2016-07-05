@@ -5,6 +5,9 @@ import com.mitrakova.formatter.formatter.FormatterException;
 import com.mitrakova.formatter.formatter.StateContainer;
 import com.mitrakova.formatter.formatter.lexemes.LexFinder;
 
+/**
+ * Interface for key symbols
+ */
 public interface IHandler {
    void doSomething(StringBuffer insert, StringBuffer lexeme, LexFinder lexFinder, StateContainer stateContainer) throws FormatterException;
 }
